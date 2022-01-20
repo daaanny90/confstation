@@ -3,16 +3,18 @@ definitions:
     - step: &business-build
         name: Build Business
         image: openjdk:11-jdk-slim
+        caches:
+          - gradle
         script:
           - cd business
           - ./gradlew clean build
 
     - step: &ui-build
         name: Build UI
-        image: node:slim
+        image: node:14-slim
         script:
           - cd ui
-          - ./gradlew clean build
+          - npm install
 
 pipelines:
   default:
