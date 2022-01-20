@@ -18,4 +18,9 @@
     div.main div {
         font-weight: bold;
     }
+
+    div.main p {
+        font-weight: bold;
+        font-size:2em;
+    }
 </style>

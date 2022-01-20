@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class StationController(private val service: Service) {
-    @GetMapping("/event/{eventId}station/{stationId}")
+    @GetMapping("/event/{eventId}/station/{stationId}")
     fun loadConfig(
         @PathVariable eventId:String, @PathVariable stationId:String
     ) = service.getConfig(eventId, stationId)

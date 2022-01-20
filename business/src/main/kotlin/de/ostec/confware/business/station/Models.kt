@@ -1,27 +1,23 @@
 package de.ostec.confware.business.station
 
-import java.util.*
-
 class Event(
     val uuid:String,
     val name:String,
-    val activityTracking: Boolean,
-    val cookieAgreement: Boolean,
-    val theme:String
-)
-
-class Price(
-    val uuid:String,
-    val name:String,
-    val availableTime: Date,
-    val available:Boolean
+    val logo:Logo
 )
 
 class Station(
     val uuid:String,
     val name:String,
+    val event:Event,
+    val logo:Logo,
+    val theme: Theme,
     val main:App,
     val lead:App
 )
+
+class Logo (val src:String, val title:String)
+
+class Theme (val css:String)
 
 class App(val id:String, val name:String)
