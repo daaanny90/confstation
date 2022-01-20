@@ -1,0 +1,23 @@
+definitions:
+  steps:
+    - step: &business-build
+        name: Build Business
+        image: openjdk:11-jdk-slim
+        script:
+          - cd business
+          - ./gradlew clean build
+
+    - step: &ui-build
+        name: Build UI
+        image: node:slim
+        script:
+          - cd ui
+          - ./gradlew clean build
+
+pipelines:
+  default:
+    - parallel:
+      - step: *business-build
+      - step: *ui-build
+
+
