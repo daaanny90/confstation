@@ -15,6 +15,9 @@ definitions:
     echo $GCLOUD_API_KEY > ./gcloud-api-key.json
   dockerBuild: &dockerBuild
     docker build -f container/Dockerfile . --tag confware
+  terraformInit: &terraformInit
+    echo $TERRAFORM_KEYFILE > credentials/terraform.json &&
+    terraform init
 
   steps:
     - step: &business-base
@@ -63,11 +66,36 @@ definitions:
         artifacts:
           - ui/public/**
 
+    - step: &terraform-verify
+        name: Terraform Verify
+        image: hashicorp/terraform:1.1.4
+        script:
+          - cd infra
+          - *terraformInit
+          - terraform validate
+
+    - step: &terraform-apply
+        name: Terraform Apply
+        image: hashicorp/terraform:1.1.4
+        script:
+          - cd infra
+          - *terraformInit
+          - terraform apply -auto-approve -var="build=$BITBUCKET_BUILD_NUMBER"
+
+    - step: &terraform-destroy
+        name: Terraform Destroy
+        image: hashicorp/terraform:1.1.4
+        script:
+          - cd infra
+          - *terraformInit
+          - terraform destroy -auto-approve
+
 pipelines:
   default:
     - parallel:
       - step: *ui-verify
       - step: *business-verify
+      - step: *terraform-verify
 
     - step:
         <<: *ui-build
@@ -82,8 +110,14 @@ pipelines:
           - export GCLOUD_API_KEY=$DOCKER_KEYFILE
           - *gcpWriteApiKey
           - *gcpAuth
-          - export VERSION=stage
+          - export VERSION=$BITBUCKET_BUILD_NUMBER
           - *gcpDockerPush
         caches:
           - docker
+    - step:
+        <<: *terraform-apply
+    - step:
+        <<: *terraform-destroy
+        trigger: manual
+
 

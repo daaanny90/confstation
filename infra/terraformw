@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+
+VERSION=1.1.4
+
+docker run -it --rm -v "$(pwd):/terraform" -w "/terraform" hashicorp/terraform:${VERSION} "$@"
