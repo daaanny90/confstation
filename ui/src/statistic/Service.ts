@@ -9,7 +9,7 @@ export class Service {
 
     getInfo(eventId:string, stationId:string) {
         return new Promise((resolve, reject) => {
-            fetch(this.apiUrl + `/event/${eventId}/station/${stationId}/statistic`)
+            fetch(`${this.apiUrl}event/${eventId}/station/${stationId}/statistic`)
                 .then((res) => {
                     res.json()
                         .then((obj:Object) => {

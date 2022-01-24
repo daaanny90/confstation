@@ -1,25 +1,123 @@
+options:
+  docker: true
+
 definitions:
+  gcpAuth: &gcpAuth
+    gcloud auth activate-service-account --key-file gcloud-api-key.json &&
+    gcloud config set project $GCLOUD_PROJECT
+  gcpDockerPush: &gcpDockerPush
+    cat ./gcloud-api-key.json | docker login -u _json_key --password-stdin https://eu.gcr.io &&
+    export IMAGE_NAME=eu.gcr.io/${GCLOUD_PROJECT}/confware:${VERSION} &&
+    docker tag confware ${IMAGE_NAME} &&
+    echo "Push to ${IMAGE_NAME}" &&
+    docker push ${IMAGE_NAME}
+  gcpWriteApiKey: &gcpWriteApiKey
+    echo $GCLOUD_API_KEY > ./gcloud-api-key.json
+  dockerBuild: &dockerBuild
+    docker build -f container/Dockerfile . --tag confware
+  terraformInit: &terraformInit
+    echo $TERRAFORM_KEYFILE > credentials/terraform.json &&
+    terraform init
+
   steps:
-    - step: &business-build
-        name: Build Business
+    - step: &business-base
+        name: Business Base
         image: openjdk:11-jdk-slim
         caches:
           - gradle
+
+    - step: &business-verify
+        <<: *business-base
+        name: Business Verify
         script:
           - cd business
           - ./gradlew clean build
 
-    - step: &ui-build
-        name: Build UI
+    - step: &business-build
+        <<: *business-base
+        name: Business Build
+        script:
+          - cp -R ui/public/* business/src/main/resources/static
+          - cd business
+          - ./gradlew clean build -x test
+        artifacts:
+          - business/build/libs/business-0.0.1-SNAPSHOT.jar
+
+    - step: &ui-base
+        name: UI Base
         image: node:14-slim
+        caches:
+          - node
+
+    - step: &ui-verify
+        <<: *ui-base
+        name: UI Verify
         script:
           - cd ui
           - npm install
 
+    - step: &ui-build
+        <<: *ui-base
+        name: UI Build
+        script:
+          - cd ui
+          - npm install
+          - npm run build
+        artifacts:
+          - ui/public/**
+
+    - step: &terraform-verify
+        name: Terraform Verify
+        image: hashicorp/terraform:1.1.4
+        script:
+          - cd infra
+          - *terraformInit
+          - terraform validate
+
+    - step: &terraform-apply
+        name: Terraform Apply
+        image: hashicorp/terraform:1.1.4
+        script:
+          - cd infra
+          - *terraformInit
+          - terraform apply -auto-approve -var="build=$BITBUCKET_BUILD_NUMBER"
+
+    - step: &terraform-destroy
+        name: Terraform Destroy
+        image: hashicorp/terraform:1.1.4
+        script:
+          - cd infra
+          - *terraformInit
+          - terraform destroy -auto-approve
+
 pipelines:
   default:
     - parallel:
-      - step: *business-build
-      - step: *ui-build
+      - step: *ui-verify
+      - step: *business-verify
+      - step: *terraform-verify
+
+    - step:
+        <<: *ui-build
+        trigger: manual
+    - step: *business-build
+    - step:
+        name: Docker Build Push
+        image: google/cloud-sdk:alpine
+        deployment: Staging
+        script:
+          - *dockerBuild
+          - export GCLOUD_API_KEY=$DOCKER_KEYFILE
+          - *gcpWriteApiKey
+          - *gcpAuth
+          - export VERSION=$BITBUCKET_BUILD_NUMBER
+          - *gcpDockerPush
+        caches:
+          - docker
+    - step:
+        <<: *terraform-apply
+    - step:
+        <<: *terraform-destroy
+        trigger: manual
 
 
