@@ -18,7 +18,8 @@ const config: Config.InitialOptions = {
         "ts",
         "svelte"
     ],
-    "testMatch": ["**/tests/**/*.ts", "**/?(*.)+(test).ts"]
+    "testMatch": ["**/tests/**/*.ts", "**/?(*.)+(test).ts"],
+    "reporters": ["default", "jest-junit"]
     // setupFilesAfterEnv: ['./tests/bootstrap.ts']
 };
 export default config;
