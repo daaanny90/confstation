@@ -1,4 +1,6 @@
 /node_modules/
 /public/build/
+/coverage/
+/test-reports/
 
 .DS_Store
