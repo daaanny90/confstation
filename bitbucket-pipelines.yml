@@ -55,6 +55,7 @@ definitions:
         script:
           - cd ui
           - npm install
+          - npm test
 
     - step: &ui-build
         <<: *ui-base
