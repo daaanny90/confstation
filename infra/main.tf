@@ -1,6 +1,7 @@
 locals {
   project = "confware-stage"
   region  = "europe-west1"
+  location = "europe-west"
 }
 
 terraform {
@@ -32,6 +33,7 @@ resource "google_project_service" "services" {
     "firestore.googleapis.com",
     "iam.googleapis.com",
     "run.googleapis.com",
+    "appengine.googleapis.com"
   ])
 
   service            = each.key

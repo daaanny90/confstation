@@ -32,7 +32,7 @@ resource "google_cloud_run_service" "run_service" {
       containers {
         image = "eu.gcr.io/${local.project}/confware:${local.image_tag}"
       }
-      service_account_name = google_service_account.run_user.name
+      service_account_name = google_service_account.run_user.email
     }
 
     metadata {
