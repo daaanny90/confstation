@@ -15,7 +15,9 @@ resource "google_service_account" "run_user" {
 }
 
 resource "google_project_iam_member" "run_user_roles" {
-  for_each = toset([])
+  for_each = toset([
+    "roles/datastore.user"
+  ])
 
   project = local.project
   member = "serviceAccount:${google_service_account.run_user.email}"

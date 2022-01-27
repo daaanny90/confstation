@@ -31,6 +31,7 @@ definitions:
         name: Business Verify
         script:
           - cd business
+          - export TESTCONTAINERS_RYUK_DISABLED=true
           - ./gradlew clean build
 
     - step: &business-build

@@ -20,7 +20,13 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("com.google.cloud:google-cloud-firestore:3.0.10")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.testcontainers:testcontainers:1.16.3")
+    testImplementation("org.testcontainers:junit-jupiter:1.16.3")
+    testImplementation("org.testcontainers:gcloud:1.16.3")
+    testImplementation("io.mockk:mockk:1.12.2")
 }
 
 tasks.withType<KotlinCompile> {

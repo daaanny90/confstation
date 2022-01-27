@@ -11,13 +11,9 @@ class Station(
     val name:String,
     val event:Event,
     val logo:Logo,
-    val theme: Theme,
-    val main:App,
-    val lead:App
+    val theme: Theme
 )
 
 class Logo (val src:String, val title:String)
 
 class Theme (val css:String)
-
-class App(val id:String, val name:String)
