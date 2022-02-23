@@ -1,0 +1,10 @@
+version: "3"
+services:
+  php:
+    image: composer/composer
+    working_dir: /project
+    volumes:
+      - "./:/project"
+    ports:
+      - "8080:8080"
+    command: ["composer", "run", "--timeout", "0", "start"]
