@@ -1,0 +1,10 @@
+version: '3'
+services:
+  confware-ui:
+    image: node:lts
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - 8900:8080
+    command: sh -c "yarn install && yarn run serve"

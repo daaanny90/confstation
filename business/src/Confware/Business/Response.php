@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 namespace Confware\Business;
+header('Access-Control-Allow-Origin: *');
 
 use Psr\Http\Message\ResponseInterface;
 

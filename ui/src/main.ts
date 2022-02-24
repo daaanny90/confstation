@@ -6,3 +6,5 @@ const app = new App({
 });
 
 export default app;
+
+dateBetween(if( empty(prop("Harvest")),now(),start(prop("Harvest"))), start(prop("Born")), "weeks")
