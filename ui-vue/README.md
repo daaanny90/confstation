@@ -24,4 +24,7 @@ The frontend is now reachable at http://localhost:8081
 - `interfaces/`: where the types of entites are defined
 - `views/`: the "pages" of the web app
 
+- `App.vue` is the actual web app
+- `http-common.ts` is where the common API settings are defined
+
 For any question please refer to [Danny](mailto:danny@ostec.de)
