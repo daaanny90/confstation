@@ -8,6 +8,7 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import Welcome from "@/components/Welcome.vue";
+import Station from "@/interfaces/station";
 
 @Options({
   components: {
@@ -18,6 +19,6 @@ import Welcome from "@/components/Welcome.vue";
   },
 })
 export default class Home extends Vue {
-  station!: Record<string, unknown>;
+  station: Station[] = [];
 }
 </script>

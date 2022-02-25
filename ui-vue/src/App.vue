@@ -14,27 +14,26 @@
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
-
-import StationDataServices from "@/services/stationDataServices";
+import { StationApi } from "@/api/stationApi";
+import Station from "@/interfaces/station";
 
 export default class App extends Vue {
   serviceID = process.env.VUE_APP_DEV_STATION_ID;
-  station: Record<string, unknown> = {};
+  station: Station[] = [];
   stationExsist = false;
   isLoading = false;
 
   getStation = async (): Promise<void> => {
     this.isLoading = true;
-    this.station = await StationDataServices.get(this.serviceID);
+    this.station = await StationApi.getStation(this.serviceID);
     this.isLoading = false;
 
-    if (this.station) {
+    if (this.station !== null) {
       this.stationExsist = true;
       return;
     }
 
     this.stationExsist = false;
-    console.log(this.station);
   };
 
   mounted(): void {

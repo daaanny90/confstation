@@ -12,20 +12,16 @@ First of all start the `business` container. After that the frontend container c
 ```
 docker-compose up
 ```
-The frontend is now reachable at http://localhost:8900
+The frontend is now reachable at http://localhost:8081
 
-## Folder structure and file explanation
+## Folder structure explanation
 
-### Folders
 - `assets/`: all static assets used in the web app
 - `components/`: all single reusable components
 - `router/`: where all routes are defined
-- `services/`: all API requests
+- `api/`: all API requests, organized by entity
 - `store/`: where the state is defined along with getter, setter, etc.
+- `interfaces/`: where the types of entites are defined
 - `views/`: the "pages" of the web app
-
-### Files
-- `App.vue` is the actual web app
-- `http-common.ts` is where the common API settings are saved
 
 For any question please refer to [Danny](mailto:danny@ostec.de)
