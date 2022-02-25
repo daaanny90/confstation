@@ -1,13 +1,13 @@
-FROM node:lts-alpine
+FROM node:16
 
-WORKDIR /usr/src/app/my-app
+WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install -g @vue/cli && \
-    npm install -g @vue/cli-service && \
-    npm install
+RUN yarn install
 
-EXPOSE 3000
+COPY . .
 
-CMD ["npm", "run", "serve"]
+EXPOSE 8080
+
+CMD ["yarn", "serve"]
