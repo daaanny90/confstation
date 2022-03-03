@@ -27,4 +27,9 @@ The frontend is now reachable at http://localhost:8081
 - `App.vue` is the actual web app
 - `http-common.ts` is where the common API settings are defined
 
+## Style
+
+The project uses [Bootstrap 5](https://getbootstrap.com/docs/5.1/getting-started/introduction/) as CSS framework.
+[Here](https://dev.to/codeply/using-bootstrap-5-with-vue-js-5fnp) can be found a little explanation how to use the Bootstrap components in Vue.
+
 For any question please refer to [Danny](mailto:danny@ostec.de)
