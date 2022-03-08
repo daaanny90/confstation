@@ -1,27 +1,37 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
+  <div class="container">
+    <Header :stationLogo="stationLogo" />
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
 
-  <div v-if="isLoading">Loading...</div>
+    <div v-if="isLoading">Loading...</div>
 
-  <div v-if="!isLoading && stationExsist">
-    <router-view :station="station" />
+    <div v-if="!isLoading && stationExsist">
+      <router-view :station="station" />
+    </div>
+    <div v-else-if="!isLoading && !stationExsist">NO STATION</div>
   </div>
-  <div v-else-if="!isLoading && !stationExsist">NO STATION</div>
 </template>
 
 <script lang="ts">
-import { Vue } from "vue-class-component";
+import { Vue, Options } from "vue-class-component";
 import { StationApi } from "@/api/stationApi";
 import Station from "@/interfaces/station";
+import Header from "@/components/Header.vue";
 
+@Options({
+  components: {
+    Header,
+  },
+})
 export default class App extends Vue {
   serviceID = process.env.VUE_APP_DEV_STATION_ID;
   station: Station[] = [];
   stationExsist = false;
   isLoading = false;
+  stationLogo = "";
 
   getStation = async (): Promise<void> => {
     this.isLoading = true;
@@ -30,6 +40,7 @@ export default class App extends Vue {
 
     if (this.station !== null) {
       this.stationExsist = true;
+      this.stationLogo = this.station.logo.src;
       return;
     }
 
