@@ -12,7 +12,10 @@
       repellendus et exercitationem.
     </p>
 
-    <Button text="STARTEN" />
+    <router-link to="mainstage">
+      <Button goto="/mainstage" text="STARTEN" />
+    </router-link>
+
     <a href="#" class="mt-2">(?) Hilfe</a>
   </div>
 </template>
