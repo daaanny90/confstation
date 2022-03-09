@@ -12,8 +12,8 @@
       repellendus et exercitationem.
     </p>
 
-    <router-link to="mainstage">
-      <Button goto="/mainstage" text="STARTEN" />
+    <router-link to="QR">
+      <Button goto="/QR" text="STARTEN" />
     </router-link>
 
     <a href="#" class="mt-2">(?) Hilfe</a>
@@ -37,7 +37,7 @@ export default class Intro extends Vue {}
   background: $background-grey;
   height: 100%;
   text-align: left;
-  padding: 5rem 5rem 1rem 5rem;
+  padding: $container-padding;
   border-radius: $border-radius;
 }
 
