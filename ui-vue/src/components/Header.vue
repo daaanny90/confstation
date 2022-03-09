@@ -4,8 +4,16 @@
       <span
         class="navbar-brand mb-0 h1 d-flex justify-content-start position-relative"
       >
-        <div class="logo event-logo" :style="'background-image: url(' + eventLogo + ')'" alt="Event Logo" />
-        <div class="logo station-logo" :style="'background-image: url(' + stationLogo + ')'" alt="Station Logo" />
+        <div
+          class="logo event-logo"
+          :style="'background-image: url(' + eventLogo + ')'"
+          alt="Event Logo"
+        />
+        <div
+          class="logo station-logo"
+          :style="'background-image: url(' + stationLogo + ')'"
+          alt="Station Logo"
+        />
       </span>
     </div>
   </nav>

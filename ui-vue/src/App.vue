@@ -1,17 +1,15 @@
 <template>
-  <div class="container">
-    <Header :stationLogo="stationLogo" />
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+  <div class="container app-container d-flex flex-column">
+    <Header v-if="station.logo" :stationLogo="station.logo.src" />
+    <div v-else>Loading...</div>
 
     <div v-if="isLoading">Loading...</div>
 
-    <div v-if="!isLoading && stationExsist">
+    <div class="container main" v-if="!isLoading && stationExsist">
       <router-view :station="station" />
     </div>
     <div v-else-if="!isLoading && !stationExsist">NO STATION</div>
+    <Footer />
   </div>
 </template>
 
@@ -20,10 +18,12 @@ import { Vue, Options } from "vue-class-component";
 import { StationApi } from "@/api/stationApi";
 import Station from "@/interfaces/station";
 import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 
 @Options({
   components: {
     Header,
+    Footer,
   },
 })
 export default class App extends Vue {
@@ -35,12 +35,13 @@ export default class App extends Vue {
 
   getStation = async (): Promise<void> => {
     this.isLoading = true;
-    this.station = await StationApi.getStation(this.serviceID);
-    this.isLoading = false;
+    await StationApi.getStation(this.serviceID).then((response) => {
+      this.station = response;
+      this.isLoading = false;
+    });
 
     if (this.station !== null) {
       this.stationExsist = true;
-      this.stationLogo = this.station.logo.src;
       return;
     }
 
@@ -60,6 +61,7 @@ export default class App extends Vue {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100%;
 }
 
 #nav {
@@ -73,5 +75,15 @@ export default class App extends Vue {
       color: #42b983;
     }
   }
+}
+
+.app-container {
+  height: 100%;
+}
+
+.main {
+  padding: 2rem 0;
+  height: 100%;
+  flex: 1;
 }
 </style>
