@@ -32,6 +32,12 @@ export default class Level extends Vue {}
     margin: 0;
   }
 
+  .level-winzone {
+    @media screen and (max-width: $breakpoint-lg) {
+      font-size: 0.6rem;
+    }
+  }
+
   .level-title {
     font-weight: bold;
   }
@@ -42,6 +48,8 @@ export default class Level extends Vue {}
     display: flex;
     align-items: center;
     flex-direction: column;
+    max-width: 7rem;
+    position: relative;
   }
 
   .level {

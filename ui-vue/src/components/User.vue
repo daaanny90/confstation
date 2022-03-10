@@ -27,9 +27,12 @@ export default class User extends Vue {}
     border: 4px solid $border-grey;
     border-radius: 50%;
     height: 67%;
+    max-width: 7rem;
+    width: 100%;
+    margin: 0 auto;
 
-    @media screen and (max-width: $breakpoint-xl) {
-      height: 49%;
+    @media screen and (max-width: $breakpoint-md) {
+      height: 6rem;
     }
 
     @media screen and (max-width: $breakpoint-lg) {

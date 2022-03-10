@@ -1,11 +1,18 @@
 <template>
   <div class="status-container d-flex">
-    <div class="status-sidebar d-flex flex-column justify-content-between">
+    <div class="status-sidebar flex-column justify-content-between">
       <User />
       <Level />
       <Points />
     </div>
-    <div class="status-main d-flex flex-column justify-content-center align-items-center">
+    <div class="status-sidebar-mobile">
+      <Level />
+      <User />
+      <Points />
+    </div>
+    <div
+      class="status-main d-flex flex-column justify-content-center align-items-center"
+    >
       <div
         class="background"
         :style="
@@ -15,7 +22,9 @@
         "
       ></div>
       <p>
-        Gut gemacht, du hast dein <br/> erstes Level erreicht! Viel <br/> Spaß im Spiel.
+        Gut gemacht, du hast dein <br />
+        erstes Level erreicht! Viel <br />
+        Spaß im Spiel.
       </p>
       <Button text="DASHBOARD" />
     </div>
@@ -43,13 +52,37 @@ export default class Status extends Vue {}
 <style lang="scss" scoped>
 .status-container {
   height: 100%;
+
+  @media screen and (max-width: $breakpoint-md) {
+    flex-direction: column;
+  }
+}
+.status-sidebar-mobile {
+  display: none;
+
+  @media screen and (max-width: $breakpoint-md) {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid gray;
+    height: 35%;
+    align-items: center;
+
+    *:nth-child(2) {
+      width: 45%;
+    }
+  }
 }
 .status-sidebar {
   width: 20%;
   border-right: 1px solid $grey;
   padding: 0 3rem;
+  display: flex;
 
-  @media screen and (max-width: $breakpoint-lg) {
+  @media screen and (max-width: $breakpoint-md) {
+    display: none;
+  }
+
+  @media screen and (max-width: $breakpoint-xl) {
     padding: 0 1rem;
   }
 
