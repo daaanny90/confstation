@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import Intro from "../views/Intro.vue";
 import Mainstage from "../views/Mainstage.vue";
 import QR from "../views/QR.vue";
+import Status from "../views/Status.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -24,6 +25,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/mainstage",
     name: "mainstage",
     component: Mainstage,
+  },
+  {
+    path: "/status",
+    name: "status",
+    component: Status,
   },
   {
     path: "/about",
