@@ -49,6 +49,10 @@ export default class Status extends Vue {}
   border-right: 1px solid $grey;
   padding: 0 3rem;
 
+  @media screen and (max-width: $breakpoint-lg) {
+    padding: 0 1rem;
+  }
+
   *:first-child {
     border-bottom: 2px solid $grey;
   }
