@@ -1,5 +1,5 @@
 <template>
-  <button type="button" class="btn btn-primary py-3">{{ text }}</button>
+  <button type="button" class="btn btn-primary btn-lg">{{ text }}</button>
 </template>
 
 <script>
@@ -14,9 +14,14 @@ export default class Button extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-.btn {
-  width: 15rem;
-  border-radius: $border-radius;
-  font-weight: bold;
+button {
+  &.btn {
+    &.btn-lg {
+      width: 15rem;
+      font-weight: bold;
+      color: white;
+    }
+  }
+
 }
 </style>
