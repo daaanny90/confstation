@@ -28,6 +28,7 @@
       </p>
       <Button text="DASHBOARD" />
     </div>
+    <Registration />
   </div>
 </template>
 
@@ -37,6 +38,7 @@ import User from "@/components/User";
 import Level from "@/components/Level";
 import Points from "@/components/Points";
 import Button from "@/components/Button";
+import Registration from "@/components/Registration";
 
 @Options({
   components: {
@@ -44,6 +46,7 @@ import Button from "@/components/Button";
     Level,
     Points,
     Button,
+    Registration,
   },
 })
 export default class Status extends Vue {}
@@ -73,7 +76,7 @@ export default class Status extends Vue {}
   }
 }
 .status-sidebar {
-  width: 20%;
+  width: 30%;
   border-right: 1px solid $grey;
   padding: 0 3rem;
   display: flex;
@@ -116,7 +119,7 @@ export default class Status extends Vue {}
     background-position: center;
     background-size: contain;
     position: absolute;
-    top: 0;
+    top: -50px;
     z-index: -1;
   }
 }

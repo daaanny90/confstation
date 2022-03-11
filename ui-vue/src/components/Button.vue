@@ -22,6 +22,5 @@ button {
       color: white;
     }
   }
-
 }
 </style>

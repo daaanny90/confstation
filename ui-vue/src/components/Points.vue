@@ -10,7 +10,9 @@
       ></div>
       <p class="points">350</p>
     </div>
-    <div class="points-badge d-flex justify-content-center align-items-center">PRO</div>
+    <div class="points-badge d-flex justify-content-center align-items-center">
+      PRO
+    </div>
   </div>
 </template>
 
@@ -36,6 +38,7 @@ export default class Points extends Vue {}
   border: 7px solid $grey;
   max-width: 7rem;
   margin: 0 auto;
+  max-height: 7rem;
 
   .cup {
     background-position: center;

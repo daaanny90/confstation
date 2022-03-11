@@ -38,7 +38,7 @@ export default class Intro extends Vue {}
   height: 100%;
   text-align: left;
   padding: $container-padding;
-  border-radius: $border-radius;
+  border-radius: 20px;
 }
 
 h1 {
