@@ -1,0 +1,10 @@
+version: '3'
+services:
+  confware-ui:
+    build: .
+    working_dir: /app
+    ports:
+      - 8081:8080
+    volumes:
+      - ./src:/app/src
+      - ./vue.config.js:/app/vue.config.js

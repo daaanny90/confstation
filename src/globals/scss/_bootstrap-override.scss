@@ -1,0 +1,20 @@
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1250px
+);
+
+$grid-breakpoints: (
+  xs:$breakpoint-xs,
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  xxl: $breakpoint-xxl
+);
+
+$theme-colors: (
+  primary: #1da1f2
+);
