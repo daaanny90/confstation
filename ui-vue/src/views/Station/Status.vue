@@ -26,7 +26,9 @@
         erstes Level erreicht! Viel <br />
         Spaß im Spiel.
       </p>
-      <Button text="DASHBOARD" />
+      <router-link to="/dashboard">
+        <Button text="DASHBOARD" />
+      </router-link>
     </div>
     <Registration />
   </div>

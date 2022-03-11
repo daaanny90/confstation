@@ -1,5 +1,7 @@
 <template>
-  <div class="registration-container d-flex flex-column justify-content-between">
+  <div
+    class="registration-container d-flex flex-column justify-content-between"
+  >
     <h3>Lead App Example</h3>
     <form class="d-flex flex-column justify-content-between">
       <div class="mb-1">
@@ -27,7 +29,9 @@
         >
       </div>
       <button type="submit" class="btn btn-primary btn-lg">WEITER</button>
-      <a href="#">Nein danke, weiter zum Dashboard.</a>
+      <router-link to="dashboard"
+        >Nein danke, weiter zum Dashboard.</router-link
+      >
     </form>
   </div>
 </template>

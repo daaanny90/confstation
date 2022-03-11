@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
-import Intro from "../views/Intro.vue";
-import Mainstage from "../views/Mainstage.vue";
-import QR from "../views/QR.vue";
-import Status from "../views/Status.vue";
+import Intro from "../views/Station/Intro.vue";
+import Mainstage from "../views/Station/Mainstage.vue";
+import QR from "../views/Station/QR.vue";
+import Status from "../views/Station/Status.vue";
+import Dashboard from "../views/Board/Dashboard.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -30,6 +31,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/status",
     name: "status",
     component: Status,
+  },
+  {
+    path: "/dashboard",
+    name: "dashboard",
+    component: Dashboard,
   },
   {
     path: "/about",

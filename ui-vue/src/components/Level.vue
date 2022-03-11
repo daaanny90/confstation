@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="level-container d-flex flex-column justify-content-between align-items-center"
-  >
+  <div class="level-container d-flex flex-column align-items-center">
     <p class="level-title">
       Sofortpreis <br />
       LEVEL 7
@@ -23,13 +21,15 @@ export default class Level extends Vue {}
 <style lang="scss" scoped>
 .level-container {
   height: 100%;
-  padding: 0.5rem 0 0 0;
 
   .level-title,
   .level-winzone {
-    height: 15%;
-    font-size: 0.8rem;
     margin: 0;
+  }
+
+  .level-winzone {
+    font-size: 0.8rem;
+    height: 15;
   }
 
   .level-winzone {
@@ -50,22 +50,25 @@ export default class Level extends Vue {}
     flex-direction: column;
     max-width: 7rem;
     position: relative;
+    max-height: 7rem;
   }
 
   .level {
     z-index: 1;
     font-size: 3rem;
     position: absolute;
-    bottom: 0;
+    bottom: 9px;
     color: white;
     font-weight: bold;
+    margin: 0;
   }
 
   .level-base {
     width: 52%;
-    height: 61%;
+    height: 67%;
     background: #d2dae2;
     transform: perspective(11px) rotateX(8deg);
+    max-height: 5rem;
 
     &:after {
       content: "";

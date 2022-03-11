@@ -1,5 +1,5 @@
 <template>
-  <div class="points-container d-flex flex-column justify-content-between">
+  <div class="points-container d-flex flex-column">
     <p class="points-title">Hauptpreise <br />Punkte</p>
     <div
       class="points-base d-flex flex-column justify-content-center align-items-center"
@@ -9,9 +9,11 @@
         :style="'background-image: url(' + require('@/assets/cup.png') + ')'"
       ></div>
       <p class="points">350</p>
-    </div>
-    <div class="points-badge d-flex justify-content-center align-items-center">
-      PRO
+      <div
+        class="points-badge d-flex justify-content-center align-items-center"
+      >
+        PRO
+      </div>
     </div>
   </div>
 </template>
@@ -25,6 +27,7 @@ export default class Points extends Vue {}
 <style lang="scss" scoped>
 .points-container {
   position: relative;
+  height: 100%;
 }
 .points-title {
   font-weight: bold;
@@ -39,6 +42,7 @@ export default class Points extends Vue {}
   max-width: 7rem;
   margin: 0 auto;
   max-height: 7rem;
+  position: relative;
 
   .cup {
     background-position: center;
@@ -63,7 +67,7 @@ export default class Points extends Vue {}
   width: 4rem;
   height: 1.7rem;
   background: red;
-  bottom: -12px;
+  bottom: -17px;
   left: 50%;
   transform: translate(-50%);
   border-radius: 5px;

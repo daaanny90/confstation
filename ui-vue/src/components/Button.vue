@@ -1,5 +1,11 @@
 <template>
-  <button type="button" class="btn btn-primary btn-lg">{{ text }}</button>
+  <button
+    type="button"
+    class="btn btn-primary btn-lg"
+    :class="fullWidth ? 'full-width' : ''"
+  >
+    {{ text }}
+  </button>
 </template>
 
 <script>
@@ -8,6 +14,10 @@ import { Vue, Options } from "vue-class-component";
 @Options({
   props: {
     text: String,
+    fullWidth: {
+      default: false,
+      value: Boolean,
+    },
   },
 })
 export default class Button extends Vue {}
@@ -20,6 +30,10 @@ button {
       width: 15rem;
       font-weight: bold;
       color: white;
+
+      &.full-width {
+        width: 100%;
+      }
     }
   }
 }
