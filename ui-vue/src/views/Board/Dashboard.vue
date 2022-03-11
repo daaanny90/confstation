@@ -19,21 +19,25 @@
           class="dashboard-level d-flex flex-column justify-content-around px-2"
         >
           <Level />
-          <button class="btn btn-primary btn-sm">LEADERBOARD</button>
+          <button class="btn btn-primary btn-sm">PREISTISCH</button>
         </div>
       </div>
     </div>
     <div class="dashboard-stations d-flex flex-column">
-      <div class="not-played-stations stations d-flex justify-content-between flex-wrap">
+      <div
+        class="not-played-stations stations d-flex justify-content-between flex-wrap"
+      >
         <h2>Ungespielte Stationen (8)</h2>
         <div v-for="station in playedStations" :key="station">
-          <Station :played="false"/>
+          <Station :played="false" />
         </div>
       </div>
-      <div class="played-stations stations d-flex justify-content-between flex-wrap">
+      <div
+        class="played-stations stations d-flex justify-content-between flex-wrap"
+      >
         <h2>Gespielte Stationen (7)</h2>
         <div v-for="station in playedStations" :key="station">
-          <Station :played="true"/>
+          <Station :played="true" />
         </div>
       </div>
     </div>
@@ -71,7 +75,7 @@ export default class Dashboard extends Vue {
     font-weight: bold;
 
     @media screen and (max-width: $breakpoint-xl) {
-      font-size: .7rem;
+      font-size: 0.7rem;
     }
   }
 
