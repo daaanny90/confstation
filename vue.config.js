@@ -1,4 +1,5 @@
 module.exports = {
+  lintOnSave: false,
   css: {
     loaderOptions: {
       sass: {
@@ -7,8 +8,8 @@ module.exports = {
         @import "@/globals/scss/_bootstrap-override.scss";
         @import "@/globals/scss/_global.scss";
         @import "./node_modules/bootstrap/scss/bootstrap.scss";
-        `
-      }
-    }
-  }
+        `,
+      },
+    },
+  },
 };
