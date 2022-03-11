@@ -3,8 +3,15 @@
     <div class="user-avatar d-flex flex-column justify-content-around">
       <div
         class="avatar-image"
-        :style="'background-image: url(' + require('@/assets/avatar.png') + ')'"
+        :style="
+          'background-image: url(' + require('@/assets/danny_profile.jpg') + ')'
+        "
       >
+      <div
+        v-if="editable"
+        class="edit-icon"
+        :style="'background-image:url(' + require('@/assets/edit.png') + ')'"
+      ></div>
         <div class="user-level">Lv. 7</div>
       </div>
       <p v-if="showUsername" class="user-name">Sonny Melon</p>
@@ -21,6 +28,10 @@ import { Vue, Options } from "vue-class-component";
       default: true,
       value: Boolean,
     },
+    editable: {
+      default: false,
+      value: Boolean,
+    },
   },
 })
 export default class User extends Vue {}
@@ -29,6 +40,18 @@ export default class User extends Vue {}
 <style lang="scss" scoped>
 .user-avatar {
   height: 100%;
+  position: relative;
+
+  .edit-icon {
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    top: -15px;
+    right: -25px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
 
   .avatar-image {
     background-position: center;

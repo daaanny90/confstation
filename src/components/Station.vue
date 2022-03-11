@@ -3,7 +3,9 @@
     :class="!played ? 'played' : ''"
     class="station-container d-flex justify-content-center align-items-center"
     :style="'background-image: url(' + require('@/assets/station.png') + ')'"
-  ></div>
+  >
+  <div v-if="played" class="check" :style="'background-image:url(' + require('@/assets/station_check.png') + ')'"></div>
+  </div>
 </template>
 
 <script>
@@ -27,6 +29,7 @@ export default class Station extends Vue {}
   height: 6rem;
   background-position: center;
   background-repeat: no-repeat;
+  position: relative;
 
   @media screen and (max-width: $breakpoint-xl) {
     width: 9rem;
@@ -34,6 +37,17 @@ export default class Station extends Vue {}
 
   &.played {
     opacity: 0.4;
+  }
+
+  .check {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    top: 5px;
+    right: 5px;
   }
 }
 </style>

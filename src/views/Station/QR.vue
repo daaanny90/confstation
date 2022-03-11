@@ -9,6 +9,7 @@
         ab dolores vel omnis odit sequi velit distinctio a eligendi corrupti,
         iste mollitia.
       </p>
+      <router-link to="mainstage"><Button text="NEXT STEP" /></router-link>
     </div>
     <div class="col qr-container__icon">
       <!-- TODO: remove router-link, here only for mockup porpuses -->
@@ -27,8 +28,14 @@
 </template>
 
 <script>
-import { Vue } from "vue-class-component";
+import { Vue, Options } from "vue-class-component";
+import Button from "@/components/Button";
 
+@Options({
+  components: {
+    Button,
+  },
+})
 export default class QR extends Vue {}
 </script>
 

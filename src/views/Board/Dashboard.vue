@@ -3,8 +3,16 @@
     <div class="dashboard-sidebar d-flex flex-column">
       <div class="dashboard-sidebar-user p-3">
         <h2>Dashboard</h2>
-        <User :show-username="false" />
-        <input class="user-name" type="text" placeholder="Sonny Melon" />
+        <User :show-username="false" :editable="true" />
+        <div class="input-username">
+          <input class="user-name" type="text" placeholder="Sonny Melon" />
+          <div
+            class="edit-icon"
+            :style="
+              'background-image:url(' + require('@/assets/edit.png') + ')'
+            "
+          ></div>
+        </div>
       </div>
       <div
         class="dashboard-sidebar-statistics d-flex justify-content-between align-items-center py-2"
@@ -99,6 +107,21 @@ export default class Dashboard extends Vue {
 
       *:nth-child(2) {
         height: 10rem;
+      }
+
+      .input-username {
+        position: relative;
+
+        .edit-icon {
+          position: absolute;
+          height: 1.5rem;
+          width: 1.5rem;
+          top: 4px;
+          right: 8px;
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
       }
 
       .user-name {

@@ -3,6 +3,9 @@
     <router-link to="/intro" v-if="$route.name === 'mainstage'"
       >zurück zum Start</router-link
     >
+    <router-link to="/status" v-if="$route.name === 'mainstage'"
+      >Go to outro</router-link
+    >
   </footer>
 </template>
 
@@ -20,5 +23,9 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  a {
+    margin: 0 2rem;
+  }
 }
 </style>

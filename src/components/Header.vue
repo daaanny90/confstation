@@ -9,11 +9,13 @@
           :style="'background-image: url(' + eventLogo + ')'"
           alt="Event Logo"
         />
-        <div
-          class="logo station-logo"
-          :style="'background-image: url(' + stationLogo + ')'"
-          alt="Station Logo"
-        />
+        <router-link to="/">
+          <div
+            class="logo station-logo"
+            :style="'background-image: url(' + stationLogo + ')'"
+            alt="Station Logo"
+          />
+        </router-link>
       </span>
     </div>
   </nav>
