@@ -107,6 +107,7 @@ export default class App extends Vue {
 
 .app-container {
   height: 100%;
+  max-height: 53rem;
 }
 
 .main {
